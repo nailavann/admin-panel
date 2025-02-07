@@ -1,0 +1,12 @@
+<div class="bg-gray-800 p-5 flex justify-between items-center text-white shadow-md">
+  <div class="text-2xl font-bold tracking-wide">
+    🛠️ Admin Paneli
+  </div>
+
+  <div class="flex items-center gap-10">
+    <span class="text-lg font-medium">👤 {{ this.userStateService.user?.name }}</span>
+    <button (click)="logout()" class="bg-amber-600 px-4 py-2 rounded-lg hover:bg-amber-700 transition duration-300">
+      Çıkış Yap
+    </button>
+  </div>
+</div>
