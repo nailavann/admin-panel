@@ -1,0 +1,21 @@
+<div class="flex gap-6 mt-6">
+  <div class="w-64 bg-gray-100 p-4 rounded-lg shadow">
+    <h2 class="text-xl font-semibold text-center mb-4">Kategoriler</h2>
+    <ul class="space-y-2">
+      <li *ngFor="let category of categories">
+        <a
+
+          [routerLink]="category.id"
+          routerLinkActive="active-link"
+          class="block py-2 px-4 bg-white rounded-lg shadow-sm hover:bg-blue-500 hover:text-white transition duration-300 text-center font-medium"
+        >
+          {{ category.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="flex-1 bg-white p-6 rounded-lg shadow-md">
+    <router-outlet></router-outlet>
+  </div>
+</div>
