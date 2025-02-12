@@ -36,6 +36,14 @@ const routes: Routes = [
         loadChildren: () => import('./components/questions/questions.module').then(m => m.QuestionsModule),
       },
       {
+        path: 'categories',
+        loadChildren: () => import('./components/categories/categories.module').then(m => m.CategoriesModule),
+      },
+      {
+        path: 'images',
+        loadChildren: () => import('./components/images/images.module').then(m => m.ImagesModule),
+      },
+      {
         path: 'blogs',
         loadChildren: () => import('./components/blog/blog.module').then(m => m.BlogModule),
       },

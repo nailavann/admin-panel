@@ -1,0 +1,65 @@
+<div class="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-xl">
+  <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">📝 Yeni Soru Ekle</h2>
+
+  <form [formGroup]="questionForm" (ngSubmit)="onSubmit()" class="space-y-6">
+    <div class="space-y-2">
+      <label for="title" class="block text-gray-700 font-semibold">Başlık</label>
+      <input id="title"
+             type="text"
+             formControlName="title"
+             class="w-full px-4 py-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+             placeholder="Sorunun başlığını girin">
+      <div *ngIf="questionForm.get('title')?.invalid && questionForm.get('title')?.touched"
+           class="text-red-500 text-sm">
+        Başlık zorunludur.
+      </div>
+    </div>
+
+    <div class="space-y-2">
+      <label for="description" class="block text-gray-700 font-semibold">Açıklama</label>
+      <textarea id="description"
+                formControlName="description"
+                rows="4"
+                class="w-full px-4 py-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Sorunun detaylarını girin"></textarea>
+      <div *ngIf="questionForm.get('description')?.invalid && questionForm.get('description')?.touched"
+           class="text-red-500 text-sm">
+        Açıklama zorunludur.
+      </div>
+    </div>
+
+    <div class="space-y-2">
+      <label class="block text-gray-700 font-semibold">Kategoriler</label>
+      <mat-form-field class="w-full">
+        <mat-label>Kategoriler</mat-label>
+        <mat-select formControlName="categories" multiple>
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="space-y-2">
+      <label class="block text-gray-700 font-semibold">Resim Yükle</label>
+      <input type="file"
+             (change)="onFileChange($event)"
+             class="w-full px-4 py-3 border rounded-lg shadow-sm cursor-pointer focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+
+      <div *ngIf="base64Image" class="mt-4 flex flex-col items-center">
+        <h3 class="text-gray-700 font-medium">Onaylanan Resim:</h3>
+        <img [src]="base64Image"
+             alt="Önizleme"
+             class="mt-2 w-52 h-auto rounded-lg shadow">
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-4 mt-6">
+      <button type="submit"
+              [disabled]="questionForm.invalid"
+              class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition disabled:opacity-50">
+        ➕ Soru Ekle
+      </button>
+    </div>
+  </form>
+</div>

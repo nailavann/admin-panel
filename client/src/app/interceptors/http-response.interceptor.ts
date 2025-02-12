@@ -45,7 +45,7 @@ export class HttpResponseInterceptor implements HttpInterceptor {
         return throwError(() => new Error(errorMessage));
       }),
       finalize(() => {
-        this.loadingService.hide();
+        this.loadingService.decrementRequest();
       })
     );
   }

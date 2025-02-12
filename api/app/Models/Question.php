@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Question extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = ['title', 'description'];
 
     public function user(): BelongsTo
     {
@@ -20,5 +22,11 @@ class Question extends Model
     public function image(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'question_categories', 'question_id', 'category_id')
+            ->withTimestamps();
     }
 }

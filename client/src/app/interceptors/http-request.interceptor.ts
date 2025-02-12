@@ -15,7 +15,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.loadingService.show();
+    this.loadingService.incrementRequest();
     const authToken = localStorage.getItem('auth');
     if (authToken) {
       const clonedRequest = req.clone({
@@ -25,7 +25,6 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       });
       return next.handle(clonedRequest);
     }
-
     return next.handle(req);
   }
 }

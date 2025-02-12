@@ -1,5 +1,6 @@
 <div class="max-h-screen flex flex-col">
   <div class="flex-1 overflow-y-auto p-5 space-y-4">
+    <a routerLink="add-question"><p class="text-end">Soru Ekle</p></a>
     <div
       class="p-5 bg-white shadow-lg border border-gray-200 rounded-xl flex justify-between items-center gap-6 transition hover:shadow-xl"
       *ngFor="let question of questions">
@@ -8,7 +9,7 @@
           {{ question.user.name[0] | uppercase }}
         </div>
         <div class="text-gray-900 font-semibold">
-          {{ question.user.name | shorten: 15 }}
+          {{ question.user.name | shorten: 8 }}
         </div>
       </div>
 
@@ -19,6 +20,10 @@
         <span class="text-gray-600 text-sm">
           {{ question.description | shorten: 150 }}
         </span>
+      </div>
+
+      <div class="bg-blue-100 p-2 rounded" *ngFor="let category of question.categories">
+        {{ category.name }}
       </div>
 
       <div>

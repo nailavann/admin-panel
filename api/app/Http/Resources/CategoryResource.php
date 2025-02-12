@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class QuestionResource extends JsonResource
+class CategoryResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,8 @@ class QuestionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'image' => ImageResource::make($this->whenLoaded('image')),
-            'description' => $this->description,
+            'name' => $this->name,
             'created_at' => $this->created_at,
-            'categories' => CategoryResource::collection($this->whenLoaded('categories')),
-            'user' => UserResource::make($this->whenLoaded('user'))
         ];
     }
 }

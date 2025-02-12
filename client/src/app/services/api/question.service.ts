@@ -14,4 +14,8 @@ export class QuestionService extends BaseService {
   getQuestion(id: string): Observable<any> {
     return this.get(`/api/question/${id}`);
   }
+
+  postQuestion(data: {}): Observable<any> {
+    return this.post(`/api/question`, data);
+  }
 }
